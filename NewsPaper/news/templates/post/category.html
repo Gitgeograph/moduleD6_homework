@@ -1,0 +1,18 @@
+{% extends 'layout/base.html' %}
+{% load custom_filters %}
+
+{% block content %}
+    {% if category.id %}
+        <h1>{{ category }}</h1>
+        {% if not subscribed %}
+            {% if request.user.is_authenticated %}
+                <h4>Subscribe to <a href="{% url 'news:subscribe' category.id %}">{{ category }}</a></h4> 
+            {% else %}
+                <h4>Sign in to subscribe</h4>
+            {% endif %}
+        {% endif %}
+    {% endif %}
+
+    {% include 'inc/posts.html' %}
+
+{% endblock content %}

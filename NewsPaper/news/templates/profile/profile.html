@@ -1,0 +1,21 @@
+{% extends 'layout/base.html' %}
+{% block title %}
+Profile
+{% endblock title %}
+
+{% block content %}
+<h2>
+  Страница авторизованного пользователя {{request.user.username}}
+</h2>
+
+{% if category %}
+<h3>Your subscriptions:</h3>
+{% for cat in category %}
+  <div>
+    <p>{{ cat }} - <a type="button" class="btn btn-warning" href="{% url 'news:unsubscribe' cat.id %}">Unsubscribe</a></p>
+  </div>
+{% endfor %}
+{% else %}
+<h3>You don't have subscriptions</h3>
+{% endif %}
+{% endblock content %}

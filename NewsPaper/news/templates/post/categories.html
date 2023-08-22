@@ -1,0 +1,10 @@
+{% extends 'layout/base.html' %}
+{% block content %}
+{% if categories %}
+    <div class='d-flex justify-content-center align-items-center' >
+    {% for category in categories %}
+    <button class='btn btn-outline-dark'><a class="nav-link" href='{% url "news:category" category.id %}'>{{ category }}</a></button>
+    {% endfor %}
+    </div>
+{% endif %}
+{% endblock content %}

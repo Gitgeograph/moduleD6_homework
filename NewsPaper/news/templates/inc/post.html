@@ -1,0 +1,25 @@
+{% load custom_filters %}
+<div class="card">
+    <div class="card-header">
+        <h2><a href="{% url 'news:postDetail' post.pk %}">{{ post.title|Censor }}</a></h2>
+        <p> {{ post.creationData|date:'d F Y, H:i' }} </p>
+    </div>
+    <div class="card-body">
+        <p> {{ post.text|truncatechars:50 |Censor }} </p>
+        <div class='btn-group btn-group-sm'>
+        {% for cat in post.postCategory.all %}
+            <button class='btn btn-outline-dark'><a class="nav-link" href="{% url 'news:category' cat.pk %}">{{ cat }}</a></button>
+        {% endfor %}
+            </div>
+        <nav class='nav justify-content-end'>
+            <a class='nav-link' href="{% url 'news:post_update' post.id %}">
+                Update
+            </a>
+            <a class='nav-link' href="{% url 'news:post_delete' post.id %}">
+                Delete
+            </a>
+        </nav>
+    </div> 
+
+</div>
+<hr>

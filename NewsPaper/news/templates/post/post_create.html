@@ -1,0 +1,20 @@
+{% extends 'layout/base.html' %}
+
+
+{% block title %}
+News | Create
+{% endblock title %}
+
+{% block content %}
+
+<h3>News Information</h3>
+
+<form method="POST">
+ {% csrf_token %}
+ <div class='form-control'>
+ {{ form.as_div }}
+ </div>
+   <input class="btn btn-success" type="submit" value="Add">
+</form>
+
+{% endblock content %}

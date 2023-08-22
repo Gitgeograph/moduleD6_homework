@@ -1,0 +1,9 @@
+{% load custom_filters %}
+
+{% if posts %}
+    {% for post in posts %}
+            {% include 'inc/post.html' %}
+    {% endfor %}
+{% else %}
+    <h2>Постов нет</h2>
+{% endif %}
